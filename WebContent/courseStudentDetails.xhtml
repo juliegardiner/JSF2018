@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 	
 	<f:metadata>
 	<f:event type="preRenderView"
-	listener="#{courseController.loadCourses()}"
+	listener="#{courseController.studentCourseDetails(student)}"
 	></f:event>
 	</f:metadata>
   
@@ -13,44 +14,44 @@
     <title>DCW Project 2018/19</title>
      <h:outputStylesheet library="css" name="tables.css"/>
   </h:head>
-  <h1>Course Details</h1>
+  <h1>Student Course Details</h1>
   
   <h:body>
   <h:form>
-  <h:commandButton value="Add Course" action="addCourse" />
-  <br></br>
-  <h:dataTable value = "#{courseController.courses}" var = "c"
+  <h:dataTable value = "#{courseController.courses}" var = "a" 
    styleClass = "table"
    headerClass = "table-header"
    rowClasses = "table-odd-row,table-even-row">
    
    <h:column>    				
       <f:facet name = "header">Course ID:</f:facet>    				
-      #{c.cID}
+      #{a.cID}
    </h:column>
    
-   <h:column>
+    <h:column>
       <f:facet name = "header">Course Name:</f:facet>
-      #{c.cName}
+      #{a.cName}
    </h:column>
    
    <h:column>
       <f:facet name = "header">Duration:</f:facet>
-      #{c.duration}
+      #{a.duration}
+   </h:column>
+ 
+   <h:column>
+      <f:facet name = "header">Student Name:</f:facet>
+      #{a.name}
    </h:column>
    
    <h:column>
-   <f:facet name = "header">Action:</f:facet>
-   <h:link value="Show Students" outcome="list_students"/>
-    </h:column>
-    
-    <h:column>
-     <f:facet name = "header">Delete</f:facet>
-   <h:commandLink value="Delete" action="#{courseController.deleteCourse(course.cID)}"/>   
-   </h:column> 
+      <f:facet name = "header">Student Address:</f:facet>
+      #{a.address}
+   </h:column>
+  
 </h:dataTable> 
-<h:commandLink value="Home" action="index"/> 
- </h:form> 	
+<h:commandLink value="Home" action="index"/>  
+	<br/>
+	<h:commandLink value="Courses" action="list_courses"/> 
+</h:form> 		
   </h:body>
 </html>
-	

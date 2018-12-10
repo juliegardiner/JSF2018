@@ -2,23 +2,35 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-  
-  <h:head>
-    <title>DCW Project 2018/19</title>
-  </h:head>
-  
-  <h:body>
-  	<h:form>
-  		<h:messages globalOnly="true" styleClass="error"/>
-  		<br/>
-		Course ID: <h:inputText value="#{course.cID}"/> 
-		<br/>
-		Course Name: <h:inputText value="#{course.cName}" />
-		<br/>
-		Course Duration: <h:inputText value="#{course.duration}"/>
-		<br/>
-		<h:commandButton value="Add" action="#{courseController.addNewCourse(course)}" />
-  	</h:form>
-  </h:body>
+
+<h:head>
+	<title>DCW Project 2018/19</title>
+</h:head>
+
+<h:body>
+	<h1>Add Courses</h1>
+	    <h:form>
+	<h:panelGrid columns="3" border="1" cellpadding="10" cellspacing="1">
+		<f:facet name="header">
+			<h:outputLabel value="  Course ID  " />
+			<h:inputText value="#{course.cID}" />
+		</f:facet>
+
+		<f:facet name="header">
+			<h:outputLabel value="  Course Name  " />
+			<h:inputText value="#{course.cName}" />
+		</f:facet>
+
+		<f:facet name="header">
+			<h:outputLabel value="  Course Duration  " />
+			<h:inputText value="#{course.duration}" />
+		</f:facet>
+		<h:commandButton value="Add" action="#{courseController.addNewCourse(course)}" />	
+	</h:panelGrid>
+	<h:commandLink value="Home" action="index"/> 
+	<br/>
+	<h:commandLink value="Courses" action="list_courses"/> 
+	</h:form>
+</h:body>
 </html>
-	
+

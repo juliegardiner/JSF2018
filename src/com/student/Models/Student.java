@@ -17,6 +17,13 @@ public class Student {
 	public Student() {
 	}
 
+	public Student(String sid, String cID, String name, String address) {
+	this.sid=sid;
+	this.cID=cID;
+	this.name=name;
+	this.address=address;
+	}
+
 	public String getSid() {
 		return sid;
 	}

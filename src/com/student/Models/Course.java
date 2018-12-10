@@ -9,6 +9,16 @@ public class Course {
 	private String cName;
 	private int duration;
 
+	public Course() {
+		super();
+	}
+	
+	public Course(String cID, String cName, int duration) {
+	this.cID=cID;
+	this.cName=cName;
+	this.duration=duration;
+	}
+
 	//Getters and Setters
 	public String getcID() {
 		return cID;

@@ -2,25 +2,41 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-  
-  <h:head>
-    <title>DCW Project 2018/19</title>
-  </h:head>
-  
-  <h:body>
-  	<h:form>
-  		<h:messages globalOnly="true" styleClass="error"/>
-  		<br/>
-		Student ID: <h:inputText value="#{student.sid}"/> 
-		<br/>
-		Course ID: <h:inputText value="#{student.cID}" />
-		<br/>
-		Student Name: <h:inputText value="#{student.name}"/>
-		<br/>
-		Student Address: <h:inputText value="#{student.address}"/>
-		<br/>
+
+<h:head>
+	<title>DCW Project 2018/19</title>
+</h:head>
+
+<h:body>
+	<h1>Add Student</h1>
+    <h:form>
+	<h:panelGrid columns="4" bgcolor="beige" border="1" cellpadding="10" cellspacing="3">
+		<f:facet name="header">
+			<h:outputLabel value="  Student ID  " />
+			<h:inputText value="#{student.sid}" />
+		</f:facet>
+
+		<f:facet name="header">
+			<h:outputLabel value="  Course ID  " />
+			<h:inputText value="#{student.cID}" />
+		</f:facet>
+
+		<f:facet name="header">
+			<h:outputLabel value="  Student Name  " />
+			<h:inputText value="#{student.name}" />
+		</f:facet>
+		
+		<f:facet name="header">
+			<h:outputLabel value="  Student Address  " />
+			<h:inputText value="#{student.address}" />
+		</f:facet>
 		<h:commandButton value="Add" action="#{studentController.addNewStudent(student)}" />
-  	</h:form>
-  </h:body>
+	</h:panelGrid>
+	<h:commandLink value="Home" action="index"/> 
+	<br/>
+	<h:commandLink value="Students" action="list_students"/> 
+	</h:form>
+	
+</h:body>
 </html>
 	

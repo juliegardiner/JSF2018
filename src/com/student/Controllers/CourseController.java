@@ -2,22 +2,27 @@ package com.student.Controllers;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.faces.bean.ManagedBean;
-
 import com.mysql.jdbc.CommunicationsException;
 import com.student.DAOs.DAOmySQL;
+import com.student.DAOs.DAOneo4j;
 import com.student.Models.Course;
+import com.student.Models.Student;
+import com.student.Models.StudentCourse;
 
 @ManagedBean
 public class CourseController {
 	private ArrayList<Course> course;
 	private DAOmySQL daomySQL;
+	private ArrayList<StudentCourse>allDetails;
+	
 
 	public CourseController() throws Exception {
 		super();
 		daomySQL = new DAOmySQL();
 		course = new ArrayList<>();
+		
+		
 	}
 
 	public void loadCourses() {
@@ -57,9 +62,18 @@ public class CourseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//DIVERT THIS BACK TO "coursesDetails.xhtml"
-		return null;
+		return "list_courses.xhtml";
 		
 	}
+	public void studentCourseDetails(Student s) {
+		try {
+			allDetails=daomySQL.loadAllDetails(s);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 
 }
