@@ -2,6 +2,9 @@ package com.student.Models;
 
 import javax.faces.bean.ManagedBean;
 
+import com.student.DAOs.DAOmySQL;
+import com.student.DAOs.DAOneo4j;
+
 
 @ManagedBean
 public class Student {
@@ -50,5 +53,7 @@ public class Student {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	}
 
-}
+

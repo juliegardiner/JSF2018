@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+ <html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://xmlns.jcp.org/jsf/html"
+   xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+   xmlns:f="http://xmlns.jcp.org/jsf/core">
+   
+   <h:head>
+    <title>DCW Project 2018/19</title>
+   </h:head>
+   
+   <h2>Delete Student Details</h2> 
+   <h:body>
+ 	<h:messages globalOnly="true" styleClass="error"/>
+    <h:form>
+      Student Name: <h:inputText value="#{student.name}" required="true" requiredMessage="Mandatory field"/>
+  	  <h:message for="code" styleClass="error" color ="red" />
+      <br/>
+ 	<h:commandButton value="Delete Student" action="#{studentController.DeleteStudent(student)}"/>
+    </h:form>
+     <h:link value="Home" outcome="index" />
+   </h:body>
+</html>

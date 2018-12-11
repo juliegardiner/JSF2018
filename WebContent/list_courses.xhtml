@@ -19,6 +19,7 @@
   <h:form>
   <h:commandButton value="Add Course" action="addCourse" />
   <br></br>
+   <h:messages globalOnly="true" styleClass='error'/>
   <h:dataTable value = "#{courseController.courses}" var = "c"
    styleClass = "table"
    headerClass = "table-header"
@@ -46,7 +47,7 @@
     
     <h:column>
      <f:facet name = "header">Delete</f:facet>
-   <h:commandLink value="Delete" action="#{courseController.deleteCourse(course.cID)}"/>   
+   <h:commandLink value="Delete" action="deleteCourse"/>   
    </h:column> 
 </h:dataTable> 
 <h:commandLink value="Home" action="index"/> 

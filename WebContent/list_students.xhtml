@@ -19,6 +19,7 @@
   <h:form>
   <h:commandButton value="Add Student" action="addStudent"/>
   <br></br>
+   <h:messages globalOnly="true" styleClass='error' color ="blue"/>
   <h:dataTable value = "#{studentController.students}" var = "s"
    styleClass = "table"
    headerClass = "table-header"
@@ -51,8 +52,9 @@
    </h:column>
    
     <h:column>
+    
    <f:facet name = "header">Delete:</f:facet>
-    <h:link value="Delete" action="#{studentController.deleteStudent(student.sid)}"/>  
+    <h:commandLink value="Delete" action="deleteStudent"/>  
    </h:column> 
 </h:dataTable> 
 <h:commandLink value="Home" action="index"/>  

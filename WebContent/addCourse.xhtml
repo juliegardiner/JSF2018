@@ -11,19 +11,20 @@
 	<h1>Add Courses</h1>
 	    <h:form>
 	<h:panelGrid columns="3" border="1" cellpadding="10" cellspacing="1">
+	
 		<f:facet name="header">
 			<h:outputLabel value="  Course ID  " />
-			<h:inputText value="#{course.cID}" />
+			<h:inputText value= "#{course.cID}" id="cID" required="true" requiredMessage="Mandatory field"/>
 		</f:facet>
 
 		<f:facet name="header">
 			<h:outputLabel value="  Course Name  " />
-			<h:inputText value="#{course.cName}" />
+			<h:inputText value="#{course.cName}" id="cname" required="true" requiredMessage="Mandatory field" />
 		</f:facet>
 
 		<f:facet name="header">
 			<h:outputLabel value="  Course Duration  " />
-			<h:inputText value="#{course.duration}" />
+			<h:inputText value="#{course.duration}" id="duration" required="true" requiredMessage="Mandatory field" />
 		</f:facet>
 		<h:commandButton value="Add" action="#{courseController.addNewCourse(course)}" />	
 	</h:panelGrid>
@@ -31,6 +32,7 @@
 	<br/>
 	<h:commandLink value="Courses" action="list_courses"/> 
 	</h:form>
+	<h:message for="Add" style="color:blue" />
 </h:body>
 </html>
 

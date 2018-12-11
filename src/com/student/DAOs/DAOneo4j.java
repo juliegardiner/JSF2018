@@ -33,7 +33,7 @@ public class DAOneo4j {
 
 			@Override
 			public String execute(Transaction tx) {//neo4J Query for Adding a new student node
-				tx.run("CREATE (:Student {name:{name}, address:{address}})",
+				tx.run("CREATE (:STUDENT {name:{name}, address:{address}})",
 						parameters("name", student.getName(), "address", student.getAddress()));
 				return null;
 			}
@@ -46,7 +46,7 @@ public class DAOneo4j {
 	}
 
 	// Deleting student node using name
-	public void deleteStudent(String name) throws Neo4jException {
+	public void deleteStudent(Student student) throws Neo4jException {
 		//Connection Setup
 		dvr = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "neo4jdb"));
 		session = dvr.session();
@@ -55,7 +55,7 @@ public class DAOneo4j {
 
 			@Override
 			public String execute(Transaction tx) {//neo4J Query for deleting the student node
-				tx.run("MATCH (s:Student) WHERE s.name = {studentName} DELETE s", parameters("studentName", name));
+				tx.run("MATCH (s:STUDENT) WHERE s.name = {studentName} DELETE s", parameters("studentName", student));
 				return null;
 			}
 
