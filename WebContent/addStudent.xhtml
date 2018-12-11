@@ -8,38 +8,45 @@
 <h:head>
 	<title>DCW Project 2018/19</title>
 </h:head>
-
 <h:body>
-	<h1>Add Student</h1>
-    <h:form>
-	<h:panelGrid columns="4" bgcolor="beige" border="1" cellpadding="10" cellspacing="3">
-		<f:facet name="header">
-			<h:outputLabel value="  Student ID  " />
-			<h:inputText value="#{student.sid}" p:placeholder="Student ID" />
-		
-		</f:facet>
+	<h1>Add Students</h1>
+	<h:form>
+		<h:messages globalOnly="true" styleClass='error' />
+		<h:panelGrid columns="4" border="1" cellpadding="10" cellspacing="1"
+			bgcolor="pink">
 
-		<f:facet name="header">
-			<h:outputLabel value="  Course ID  " />
-			<h:inputText value="#{student.cID}" p:placeholder="Course ID" />
-		</f:facet>
-
-		<f:facet name="header">
-			<h:outputLabel value="  Student Name  " />
-			<h:inputText value="#{student.name}" p:placeholder="Student Name" />
-		</f:facet>
-		
-		<f:facet name="header">
-			<h:outputLabel value="  Student Address  " />
-			<h:inputText value="#{student.address}" p:placeholder="Student Address" />
-		</f:facet>
-		<h:commandButton value="Add" action="#{studentController.addNewStudent(student)}" />
-	</h:panelGrid>
-	<h:commandLink value="Home" action="index"/> 
-	<br/>
-	<h:commandLink value="Students" action="list_students"/> 
+			<f:facet name="header">
+				<h:outputText value="Add Students" />
+				</f:facet>
+				
+					<h:outputLabel value="  Student ID  " />
+					<h:inputText value="#{student.sid}" id="sid" placeholder="Mandatory field" required="true"
+						requiredMessage="Mandatory field" />
+						
+						<h:outputLabel value=" Course ID  " />
+					<h:inputText value="#{student.cID}" id="cID"
+						placeholder="Mandatory field" required="true"
+						requiredMessage="Mandatory field" />
+				
+					<h:outputLabel value="  Student Name  " />
+					<h:inputText value="#{student.name}" id="name" required="true"
+						requiredMessage="Mandatory field" />
+				
+					<h:outputLabel value=" Student Address " />
+					<h:inputText value="#{student.address}" id="duration"
+						required="true" requiredMessage="Mandatory field" />
+				
+				<f:facet name="footer">
+					<h:panelGroup style="display:block; text-align:center">
+						<h:commandButton id = "submit" value="Add" action="#{studentController.addNewStudent(student)}" />
+					</h:panelGroup>
+					</f:facet>		
+		</h:panelGrid>
+		<h:commandLink value="Home" action="index" />
+		<br />
+		<h:commandLink value="Courses" action="list_students" />
 	</h:form>
-	
+	<h:message for="Add" style="color:blue" />
 </h:body>
 </html>
-	
+

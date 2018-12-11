@@ -35,7 +35,7 @@ public class StudentController {
 
 	public void loadStudents() throws Exception {
 		//empties the list
-		students.clear();
+		//students.clear();
 		
 		if (daomySQL !=null) {
 		try {
@@ -82,11 +82,14 @@ public class StudentController {
 		}
 	}
 
+	//Deleting Student from Neo4j and mySql Databases;
 	public String DeleteStudent(Student s) {
 		if (daomySQL != null) {
 			try {
 				daomySQL.deleteStudent(s);
-				//daoneo4j.deleteStudent(s);
+				FacesMessage message = new FacesMessage(s.getName() +"  Has Been Deleted ");
+				FacesContext.getCurrentInstance().addMessage(null, message);
+				daoneo4j.deleteStudent(s);
 				return "list_students.xhtml";
 
 			} catch (MySQLIntegrityConstraintViolationException e) {

@@ -70,6 +70,8 @@ public class CourseController {
 		if (daomySQL != null) {
 			try {
 				daomySQL.deleteCourse(c);
+				FacesMessage message = new FacesMessage( c.getcID() + " Has Been deleted.. ");
+				FacesContext.getCurrentInstance().addMessage(null, message);
 				return "list_courses.xhtml";
 			} catch (MySQLIntegrityConstraintViolationException e) {
 				FacesMessage message = new FacesMessage("ERROR Duplicate primary key" + e.getMessage());
@@ -90,17 +92,16 @@ public class CourseController {
 
 	}
 
-}
 
-//	public void studentCourseDetails(Student s) {
-//		try {
-//			allDetails=daomySQL.loadAllDetails(s);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		
-//	}
-//	
-//
-//}
+	public void studentCourseDetails(Student s) {
+		try {
+			allDetails=daomySQL.loadAllDetails(s);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			FacesMessage message = new FacesMessage(e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			
+		}
+	}
+}

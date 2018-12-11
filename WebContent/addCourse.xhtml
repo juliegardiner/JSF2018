@@ -9,28 +9,37 @@
 
 <h:body>
 	<h1>Add Courses</h1>
-	    <h:form>
-	<h:panelGrid columns="3" border="1" cellpadding="10" cellspacing="1">
-	
-		<f:facet name="header">
-			<h:outputLabel value="  Course ID  " />
-			<h:inputText value= "#{course.cID}" id="cID" required="true" requiredMessage="Mandatory field"/>
-		</f:facet>
+	<h:form>
+		<h:messages globalOnly="true" styleClass='error' />
+		<h:panelGrid columns="4" border="1" cellpadding="10" cellspacing="1"
+			bgcolor="pink">
 
-		<f:facet name="header">
-			<h:outputLabel value="  Course Name  " />
-			<h:inputText value="#{course.cName}" id="cname" required="true" requiredMessage="Mandatory field" />
-		</f:facet>
-
-		<f:facet name="header">
-			<h:outputLabel value="  Course Duration  " />
-			<h:inputText value="#{course.duration}" id="duration" required="true" requiredMessage="Mandatory field" />
-		</f:facet>
-		<h:commandButton value="Add" action="#{courseController.addNewCourse(course)}" />	
-	</h:panelGrid>
-	<h:commandLink value="Home" action="index"/> 
-	<br/>
-	<h:commandLink value="Courses" action="list_courses"/> 
+			<f:facet name="header">
+				<h:outputText value="Add Courses" />
+				</f:facet>
+				
+					<h:outputLabel value="  Course ID  " />
+					<h:inputText value="#{course.cID}" id="cID"
+						placeholder="Mandatory field" required="true"
+						requiredMessage="Mandatory field" />
+				
+					<h:outputLabel value="  Course Name  " />
+					<h:inputText value="#{course.cName}" id="cname" required="true"
+						requiredMessage="Mandatory field" />
+				
+					<h:outputLabel value="  Course Duration  " />
+					<h:inputText value="#{course.duration}" id="duration"
+						required="true" requiredMessage="Mandatory field" />
+				
+				<f:facet name="footer">
+					<h:panelGroup style="display:block; text-align:center">
+						<h:commandButton id = "submit" value="Add" action="#{courseController.addNewCourse(course)}" />
+					</h:panelGroup>
+					</f:facet>		
+		</h:panelGrid>
+		<h:commandLink value="Home" action="index" />
+		<br />
+		<h:commandLink value="Courses" action="list_courses" />
 	</h:form>
 	<h:message for="Add" style="color:blue" />
 </h:body>

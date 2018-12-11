@@ -198,4 +198,5 @@ public class DAOmySQL {
 		return scDetails;
 
 	}
+
 }

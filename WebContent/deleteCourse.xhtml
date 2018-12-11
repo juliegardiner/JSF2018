@@ -9,15 +9,16 @@
    </h:head>
    <h:body>
    <h1>Delete Course Details</h1> 
+   <h:messages globalOnly="true" styleClass='error'/>
    <h:form>
-	<h:panelGrid columns="1" border="1" cellpadding="10" cellspacing="1">
+	<h:panelGrid columns="1" border="1" cellpadding="10" cellspacing="1" bgcolor = "silver">
 	
 	<f:facet name="header">
 			<h:outputLabel value=" Delete Course ID  " />
 			<h:inputText value= "#{course.cID}" id="cID" required="true" requiredMessage="Mandatory field"/>
 		</f:facet>
 		
- 	<h:commandButton value="Delete Course" action="#{courseController.deleteCourse(course)}"/>
+ 	<h:commandButton value="Delete Course" action="#{courseController.deleteCourse(course)}" bgcolor = "purple"/>
    </h:panelGrid>
     </h:form>
     <h:message for="Add" style="color:blue" />

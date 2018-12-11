@@ -6,7 +6,7 @@
 	
 	<f:metadata>
 	<f:event type="preRenderView"
-	listener="#{courseController.studentCourseDetails(student)}"
+	listener="#{courseController.studentCourseDetails(course)}"
 	></f:event>
 	</f:metadata>
   
@@ -18,6 +18,7 @@
   
   <h:body>
   <h:form>
+  <h:messages globalOnly="true" styleClass='error'/>
   <h:dataTable value = "#{courseController.courses}" var = "a" 
    styleClass = "table"
    headerClass = "table-header"
