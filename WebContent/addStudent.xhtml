@@ -3,12 +3,19 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
 	<title>DCW Project 2018/19</title>
+	<style>
+	.bgImage{background-image:url("resources/bg.png");}
+	.text{position: absolute;font-size: 20px; top: 70%;  color: black;}
+	.text2{position: absolute;font-size: 20px; top: 60%;  color: black;}
+	
+	</style>
 </h:head>
-<h:body>
+<h:body styleClass="bgImage">
 	<h1>Add Students</h1>
 	<h:form>
 		<h:messages globalOnly="true" styleClass='error' />
@@ -20,21 +27,21 @@
 				</f:facet>
 				
 					<h:outputLabel value="  Student ID  " />
-					<h:inputText value="#{student.sid}" id="sid" placeholder="Mandatory field" required="true"
+					<h:inputText value="#{student.sid}" id="sid" a:placeholder="Mandatory field" required="true"
 						requiredMessage="Mandatory field" />
 						
 						<h:outputLabel value=" Course ID  " />
 					<h:inputText value="#{student.cID}" id="cID"
-						placeholder="Mandatory field" required="true"
+						a:placeholder="Mandatory field" required="true"
 						requiredMessage="Mandatory field" />
 				
 					<h:outputLabel value="  Student Name  " />
 					<h:inputText value="#{student.name}" id="name" required="true"
-						requiredMessage="Mandatory field" />
+						a:placeholder="Mandatory field" requiredMessage="Mandatory field" />
 				
 					<h:outputLabel value=" Student Address " />
 					<h:inputText value="#{student.address}" id="duration"
-						required="true" requiredMessage="Mandatory field" />
+						a:placeholder="Mandatory field" required="true" requiredMessage="Mandatory field" />
 				
 				<f:facet name="footer">
 					<h:panelGroup style="display:block; text-align:center">
@@ -42,11 +49,11 @@
 					</h:panelGroup>
 					</f:facet>		
 		</h:panelGrid>
-		<h:commandLink value="Home" action="index" />
+		<h:link styleClass="text" value="Home" outcome="index" />
 		<br />
-		<h:commandLink value="Courses" action="list_students" />
+		<h:link styleClass="text2" value="Students" outcome="list_students" />
 	</h:form>
-	<h:message for="Add" style="color:blue" />
+	
 </h:body>
 </html>
 

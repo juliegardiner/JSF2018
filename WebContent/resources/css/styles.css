@@ -16,3 +16,9 @@
 .labeld {
 	font-weight: bold;
 }
+.bgImage{
+background-image:url("resources/bg.png");
+background-repeat: no-repeat;
+background-size: cover;
+}
+

@@ -7,10 +7,18 @@
 	
 <h:head>
 	<title>DCW Project 2018/19</title>
+	<h1 align="center"> Please Make a Selection: </h1>
+	<style>
+	.bgImage{background-image:url("resources/index1.jpg");}
+	.heading{position: absolute; top:20% left:50%}
+	.text{position: absolute;font-size: 40px; top: 35%; left: 40%; color: black;}
+	.text2{position: absolute;font-size: 40px; top: 65%; left: 40%; color: black;}
+	</style>
+
 </h:head>
-<h:body>
-	<h:link value="Manage Courses" outcome="list_courses"/>
+<h:body styleClass ="bgImage">
+	<h:link styleClass="text" value="Manage Courses" outcome="list_courses"/>
 	<br/>
-	<h:link value="Manage Students" outcome="list_students"/>
+	<h:link styleClass="text2" value="Manage Students" outcome="list_students"/>
 </h:body>
 </html>

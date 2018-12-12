@@ -22,6 +22,8 @@ public class DAOmySQL {
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
+	private Course course;
+	private Student student;
 
 	// Constructor
 	public DAOmySQL() throws Exception {
@@ -38,7 +40,7 @@ public class DAOmySQL {
 	// Get the students array
 	public ArrayList<Student> loadStudents() throws Exception {
 		ArrayList<Student> students = new ArrayList<Student>();
-		
+
 		conn = mysqlDS.getConnection();
 		String query = ("SELECT * from student");
 		ps = conn.prepareStatement(query);
@@ -66,14 +68,14 @@ public class DAOmySQL {
 	public void addNewStudent(Student s) throws SQLException {
 		conn = mysqlDS.getConnection();
 		String query = ("INSERT into student values(?,?,?,?)");
-		
+
 		ps = conn.prepareStatement(query);
 		ps.setString(1, s.getSid());
 		ps.setString(2, s.getcID());
 		ps.setString(3, s.getName());
 		ps.setString(4, s.getAddress());
 		ps.executeUpdate();
-		
+
 		// Close Connections
 		ps.close();
 		conn.close();
@@ -82,22 +84,21 @@ public class DAOmySQL {
 
 	// Delete Student
 	public void deleteStudent(Student s) throws Exception {
-		conn =null;
-		ps=null;
-		
-		conn=mysqlDS.getConnection();
+		conn = null;
+		ps = null;
+
+		conn = mysqlDS.getConnection();
 		String query = ("DELETE from student where name = ?");
-		ps=conn.prepareStatement(query);
-		
+		ps = conn.prepareStatement(query);
+
 		ps.setString(1, s.getName());
 		ps.executeUpdate();
-		
+
 		System.out.println("Student successfully deleted...");
-	
-		
+
 		// Close connection
-				conn.close();
-				ps.close();
+		conn.close();
+		ps.close();
 	}
 
 	// **************************************************************//
@@ -149,16 +150,16 @@ public class DAOmySQL {
 
 	// Delete Course
 	public void deleteCourse(Course c) throws SQLException {
-		conn=null;
-		ps=null;
-	
+		conn = null;
+		ps = null;
+
 		conn = mysqlDS.getConnection();
 		String query = "DELETE from course where cID = ?";
-		ps =conn.prepareStatement(query);
+		ps = conn.prepareStatement(query);
 		ps.setString(1, c.getcID());
 		ps.executeUpdate();
-		
-		System.out.println("Course" + c+ "successfully deleted...");
+
+		System.out.println("Course" + c + "successfully deleted...");
 
 		// Close connection
 		conn.close();
@@ -169,27 +170,23 @@ public class DAOmySQL {
 	//////////////////////// STUDENT_COURSES///////////////////////////
 	// ***************************************************************//
 
-	public ArrayList<StudentCourse>loadAllDetails(Student s) throws SQLException {
+	public ArrayList<Course> loadAllDetails(Course c) throws SQLException {
 
-		ArrayList<StudentCourse> scDetails = new ArrayList<StudentCourse>();
+		ArrayList<Course> scDetails = new ArrayList<Course>();
 		conn = mysqlDS.getConnection();
-		String query = ("select c.cID, sid, name,address,cName,duration from student s JOIN course c where c.cID=s.cID");
+		String query = ("select c.*,s.name,s.address from course c join student s on c.cID=s.cID where c.cID=?");
 		ps = conn.prepareStatement(query);
-		ps.setString(1, s.getSid());
+		ps.setString(1, c.getcID());
 		// Result Set
 		rs = ps.executeQuery();
 
 		while (rs.next()) {
-			StudentCourse sc = new StudentCourse();
-			// ResultSet
-			rs.getString(1);
-			rs.getString(2);
-			rs.getString(3);
-			rs.getString(4);
-			rs.getString(5);
-			rs.getInt(6);
-
-			scDetails.add(sc);
+			course = new Course(rs.getString("cID"), rs.getString("cName"), rs.getInt("duration"));
+			student = new Student();
+			student.setcID(rs.getString("name"));
+			student.setAddress(rs.getString("address"));
+			course.setStudent(student);
+			scDetails.add(course);
 		}
 		// Close connection
 		conn.close();

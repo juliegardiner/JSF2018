@@ -4,19 +4,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import com.mysql.jdbc.CommunicationsException;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import com.student.DAOs.DAOmySQL;
 import com.student.Models.Course;
-import com.student.Models.Student;
-import com.student.Models.StudentCourse;
+
 
 @ManagedBean
+@SessionScoped
 public class CourseController {
 	private ArrayList<Course> course;
 	private DAOmySQL daomySQL;
-	private ArrayList<StudentCourse> allDetails;
+	private Course courses;
 
 	public CourseController() throws Exception {
 		super();
@@ -24,21 +25,19 @@ public class CourseController {
 		course = new ArrayList<>();
 	}
 
-	// Load Courses from DAO
+	// Load Courses from DAO 
 	public void loadCourses() {
-		course.clear();
-
 		if (daomySQL != null) {
 			try {
 				course = daomySQL.loadCourses();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			System.out.println("The course size = " + course.size());
+			
 		}
 	}
 
-	public ArrayList<Course> getCourses() {
+	public ArrayList<Course> getCourse() {
 		return course;
 	}
 
@@ -91,17 +90,22 @@ public class CourseController {
 		return null;
 
 	}
+	//Global Variable stores info from list_courses to be passed to studentCourseDetails()
+	public String getCourseObject(Course courses) {
+		this.courses=courses;
+		return "courseStudentDetails.xhtml";
+	}
 
-
-	public void studentCourseDetails(Student s) {
+	//Details for ALL Course Details of the students
+	public void studentCourseDetails() {
+		course=new ArrayList<Course>();
 		try {
-			allDetails=daomySQL.loadAllDetails(s);
+			course=daomySQL.loadAllDetails(this.courses);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}catch (Exception e) {
 			FacesMessage message = new FacesMessage(e.getMessage());
-			FacesContext.getCurrentInstance().addMessage(null, message);
-			
+			FacesContext.getCurrentInstance().addMessage(null, message);	
 		}
 	}
 }

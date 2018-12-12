@@ -50,7 +50,6 @@ public class DAOneo4j {
 		//Connection Setup
 		dvr = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "neo4jdb"));
 		session = dvr.session();
-
 		session.writeTransaction(new TransactionWork<String>() {
 
 			@Override

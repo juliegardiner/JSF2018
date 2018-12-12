@@ -1,6 +1,8 @@
 .table {   
 	border-bottom:1px solid gray;
 	font-family: Tahoma,Verdana,Segoe,sans-serif;
+	top:40%;
+	left: 50%;
 }
 
 .table-header {

@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
 	<title>DCW Project 2018/19</title>
+	<style>
+	.bgImage{background-image:url("resources/bg.png");}
+	.text{position: absolute;font-size: 20px; top: 70%;  color: black;}
+	.text2{position: absolute;font-size: 20px; top: 60%;  color: black;}
+	</style>
 </h:head>
 
-<h:body>
+<h:body styleClass="bgImage">
 	<h1>Add Courses</h1>
 	<h:form>
 		<h:messages globalOnly="true" styleClass='error' />
-		<h:panelGrid columns="4" border="1" cellpadding="10" cellspacing="1"
+		
+		<h:panelGrid columns="4" border="1" cellpadding="10" cellspacing="1" 
 			bgcolor="pink">
 
 			<f:facet name="header">
@@ -19,16 +26,15 @@
 				</f:facet>
 				
 					<h:outputLabel value="  Course ID  " />
-					<h:inputText value="#{course.cID}" id="cID"
-						placeholder="Mandatory field" required="true"
+					<h:inputText value="#{course.cID}" a:placeholder="Mandatory field" id="cID" required="true"
 						requiredMessage="Mandatory field" />
 				
 					<h:outputLabel value="  Course Name  " />
-					<h:inputText value="#{course.cName}" id="cname" required="true"
+					<h:inputText value="#{course.cName}" a:placeholder="Mandatory field" id="cname" required="true"
 						requiredMessage="Mandatory field" />
 				
 					<h:outputLabel value="  Course Duration  " />
-					<h:inputText value="#{course.duration}" id="duration"
+					<h:inputText value="#{course.duration}" a:placeholder="Mandatory field" id="duration"
 						required="true" requiredMessage="Mandatory field" />
 				
 				<f:facet name="footer">
@@ -37,9 +43,9 @@
 					</h:panelGroup>
 					</f:facet>		
 		</h:panelGrid>
-		<h:commandLink value="Home" action="index" />
-		<br />
-		<h:commandLink value="Courses" action="list_courses" />
+		<h:link styleClass="text" value="Home" outcome="index" />
+		<br/>
+		<h:link styleClass="text2"  value="Courses" outcome="list_courses" />
 	</h:form>
 	<h:message for="Add" style="color:blue" />
 </h:body>

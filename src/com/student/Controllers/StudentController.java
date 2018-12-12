@@ -34,8 +34,7 @@ public class StudentController {
 	}
 
 	public void loadStudents() throws Exception {
-		//empties the list
-		//students.clear();
+		
 		
 		if (daomySQL !=null) {
 		try {
@@ -43,7 +42,6 @@ public class StudentController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("The student size = " + students.size());
 		}
 	}
 

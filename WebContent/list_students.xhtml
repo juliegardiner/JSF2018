@@ -11,11 +11,14 @@
   
   <h:head>
     <title>DCW Project 2018/19</title>
+    <style>
+	.bgImage{background-image:url("resources/bg2.png");}
+	</style>	
      <h:outputStylesheet library="css" name="tables.css"/>
   </h:head>
   <h1>Student Details</h1>
   
-  <h:body>
+  <h:body styleClass="bgImage">
   <h:form>
   <h:commandButton value="Add Student" action="addStudent"/>
   <br></br>
@@ -23,9 +26,8 @@
   <h:dataTable value = "#{studentController.students}" var = "s"
    styleClass = "table"
    headerClass = "table-header"
-   rowClasses = "table-odd-row,table-even-row">
-   
-   
+   rowClasses = "table-odd-row,table-even-row"
+   bgcolor="silver">
      <h:column>    				
       <f:facet name = "header">Student ID:</f:facet>    				
       #{s.sid}
@@ -54,7 +56,7 @@
     <h:column>
     
    <f:facet name = "header">Delete:</f:facet>
-    <h:commandLink value="Delete" action="deleteStudent"/>  
+    <h:commandLink value="Delete" action="#{studentController.DeleteStudent(s)}"/>  
    </h:column> 
 </h:dataTable> 
 <h:commandLink value="Home" action="index"/>  

@@ -8,6 +8,7 @@ public class Course {
 	private String cID;
 	private String cName;
 	private int duration;
+	private Student student;
 
 	public Course() {
 		super();
@@ -44,4 +45,11 @@ public class Course {
 		this.duration = duration;
 	}
 
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 }
