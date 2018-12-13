@@ -1,24 +1,46 @@
 <!DOCTYPE html>
-<html lang="en"
-	xmlns="http://www.w3.org/1999/xhtml"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
+	<!--Main Menu page (home) which navigates to the list of students and the list of courses -->
+
 <h:head>
 	<title>DCW Project 2018/19</title>
-	<h1 align="center"> Please Make a Selection: </h1>
+	<h1 align="center">Please Make a Selection:</h1>
 	<style>
-	.bgImage{background-image:url("resources/index1.jpg");}
-	.heading{position: absolute; top:20% left:50%}
-	.text{position: absolute;font-size: 40px; top: 35%; left: 40%; color: black;}
-	.text2{position: absolute;font-size: 40px; top: 65%; left: 40%; color: black;}
-	</style>
+.bgImage {
+	background-image: url("resources/index1.jpg");
+}
+
+.heading {
+	position: absolute;
+	top: 20% left:50%
+}
+
+.text {
+	position: absolute;
+	font-size: 40px;
+	top: 35%;
+	left: 40%;
+	color: black;
+}
+
+.text2 {
+	position: absolute;
+	font-size: 40px;
+	top: 65%;
+	left: 40%;
+	color: black;
+}
+</style>
 
 </h:head>
-<h:body styleClass ="bgImage">
-	<h:link styleClass="text" value="Manage Courses" outcome="list_courses"/>
-	<br/>
-	<h:link styleClass="text2" value="Manage Students" outcome="list_students"/>
+<h:body styleClass="bgImage">
+	<h:link styleClass="text" value="Manage Courses" outcome="list_courses" />
+	<br />
+	<h:link styleClass="text2" value="Manage Students"
+		outcome="list_students" />
 </h:body>
 </html>

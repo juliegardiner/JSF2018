@@ -54,7 +54,7 @@ public class DAOneo4j {
 
 			@Override
 			public String execute(Transaction tx) {//neo4J Query for deleting the student node
-				tx.run("MATCH (s:STUDENT) WHERE s.name = {studentName} DELETE s", parameters("studentName", student));
+				tx.run("MATCH (n:STUDENT) WHERE n.name = {name} and n.address={address} DELETE n", parameters("name", student.getName(), "address",student.getAddress()));
 				return null;
 			}
 

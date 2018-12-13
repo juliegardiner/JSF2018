@@ -3,60 +3,62 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
-	
-	<f:metadata>
+
+<!--A table with the details of the student as well as their course details. Navigation back to home page and also to view the course list -->
+
+<f:metadata>
 	<f:event type="preRenderView"
-	listener="#{courseController.studentCourseDetails()}"
-	></f:event>
-	</f:metadata>
-  
-  <h:head>
-    <title>DCW Project 2018/19</title>
-    <style>
-	.bgImage{background-image:url("resources/bg2.png");}
-	</style>
-     <h:outputStylesheet library="css" name="tables.css"/>
-  </h:head>
-  <h1>Student Course Details</h1>
-  
-  <h:body styleClass="bgImage">
-  <h:form>
-  <h:messages globalOnly="true" styleClass='error'/>
-  
-  <h:dataTable value = "#{courseController.course}" var = "a" 
-   styleClass = "table"
-   headerClass = "table-header"
-   rowClasses = "table-odd-row,table-even-row">
-   
-   <h:column>    				
-      <f:facet name = "header">Course ID:</f:facet>    				
+		listener="#{courseController.studentCourseDetails()}"></f:event>
+</f:metadata>
+
+<h:head>
+	<title>DCW Project 2018/19</title>
+	<style>
+.bgImage {
+	background-image: url("resources/bg2.png");
+}
+</style>
+	<h:outputStylesheet library="css" name="tables.css" />
+</h:head>
+<h1>Student Course Details</h1>
+
+<h:body styleClass="bgImage">
+	<h:form>
+		<h:messages globalOnly="true" styleClass='error' />
+
+		<h:dataTable value="#{courseController.course}" var="a"
+			styleClass="table" headerClass="table-header"
+			rowClasses="table-odd-row,table-even-row">
+
+			<h:column>
+				<f:facet name="header">Course ID:</f:facet>    				
       #{a.cID}
    </h:column>
-   
-    <h:column>
-      <f:facet name = "header">Course Name:</f:facet>
+
+			<h:column>
+				<f:facet name="header">Course Name:</f:facet>
       #{a.cName}
    </h:column>
-   
-   <h:column>
-      <f:facet name = "header">Duration:</f:facet>
+
+			<h:column>
+				<f:facet name="header">Duration:</f:facet>
       #{a.duration}
    </h:column>
- 
-   <h:column>
-      <f:facet name = "header">Student Name:</f:facet>
+
+			<h:column>
+				<f:facet name="header">Student Name:</f:facet>
       #{a.student.name}
    </h:column>
-   
-   <h:column>
-      <f:facet name = "header">Student Address:</f:facet>
+
+			<h:column>
+				<f:facet name="header">Student Address:</f:facet>
       #{a.student.address}
    </h:column>
-  
-</h:dataTable> 
-<h:commandLink value="Home" action="index"/>  
-	<br/>
-	<h:commandLink value="Courses" action="list_courses"/> 
-</h:form> 		
-  </h:body>
+
+		</h:dataTable>
+		<h:commandLink value="Home" action="index" />
+		<br />
+		<h:commandLink value="Courses" action="list_courses" />
+	</h:form>
+</h:body>
 </html>

@@ -2,64 +2,65 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-	
-	<f:metadata>
+
+<!--A table with the details of the students, students can be deleted and viewed here . Navigation back to home page below table -->
+<f:metadata>
 	<f:event type="preRenderView"
-	listener="#{studentController.loadStudents()}"
-	></f:event>
-	</f:metadata>
-  
-  <h:head>
-    <title>DCW Project 2018/19</title>
-    <style>
-	.bgImage{background-image:url("resources/bg2.png");}
-	</style>	
-     <h:outputStylesheet library="css" name="tables.css"/>
-  </h:head>
-  <h1>Student Details</h1>
-  
-  <h:body styleClass="bgImage">
-  <h:form>
-  <h:commandButton value="Add Student" action="addStudent"/>
-  <br></br>
-   <h:messages globalOnly="true" styleClass='error' color ="blue"/>
-  <h:dataTable value = "#{studentController.students}" var = "s"
-   styleClass = "table"
-   headerClass = "table-header"
-   rowClasses = "table-odd-row,table-even-row"
-   bgcolor="silver">
-     <h:column>    				
-      <f:facet name = "header">Student ID:</f:facet>    				
+		listener="#{studentController.loadStudents()}"></f:event>
+</f:metadata>
+
+<h:head>
+	<title>DCW Project 2018/19</title>
+	<style>
+.bgImage {
+	background-image: url("resources/bg2.png");
+}
+</style>
+	<h:outputStylesheet library="css" name="tables.css" />
+</h:head>
+<h1>Student Details</h1>
+
+<h:body styleClass="bgImage">
+	<h:form>
+		<h:commandButton value="Add Student" action="addStudent" />
+		<br></br>
+		<h:messages globalOnly="true" styleClass='error' color="blue" />
+		<h:dataTable value="#{studentController.students}" var="s"
+			styleClass="table" headerClass="table-header"
+			rowClasses="table-odd-row,table-even-row" bgcolor="silver">
+			<h:column>
+				<f:facet name="header">Student ID:</f:facet>    				
       #{s.sid}
    </h:column>
-   
-   <h:column>    				
-      <f:facet name = "header">Course ID:</f:facet>    				
+
+			<h:column>
+				<f:facet name="header">Course ID:</f:facet>    				
       #{s.cID}
    </h:column>
- 
-   <h:column>
-      <f:facet name = "header">Student Name:</f:facet>
+
+			<h:column>
+				<f:facet name="header">Student Name:</f:facet>
       #{s.name}
    </h:column>
-   
-   <h:column>
-      <f:facet name = "header">Student Address:</f:facet>
+
+			<h:column>
+				<f:facet name="header">Student Address:</f:facet>
       #{s.address}
    </h:column>
-   
-   <h:column>
-   <f:facet name = "header">Action:</f:facet>
-   <h:link value="Show Courses" outcome="list_courses"/>
-   </h:column>
-   
-    <h:column>
-    
-   <f:facet name = "header">Delete:</f:facet>
-    <h:commandLink value="Delete" action="#{studentController.DeleteStudent(s)}"/>  
-   </h:column> 
-</h:dataTable> 
-<h:commandLink value="Home" action="index"/>  
-</h:form> 		
-  </h:body>
+
+			<h:column>
+				<f:facet name="header">Action:</f:facet>
+				<h:link value="Show Courses" outcome="list_courses" />
+			</h:column>
+
+			<h:column>
+
+				<f:facet name="header">Delete:</f:facet>
+				<h:commandLink value="Delete"
+					action="#{studentController.DeleteStudent(s)}" />
+			</h:column>
+		</h:dataTable>
+		<h:commandLink value="Home" action="index" />
+	</h:form>
+</h:body>
 </html>
